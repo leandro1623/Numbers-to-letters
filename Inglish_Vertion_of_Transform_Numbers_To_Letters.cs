@@ -6,74 +6,32 @@ using System.Threading.Tasks;
 
 namespace Transformador
 {
-    public static class TransformNumbersToLetters
+    class Inglish_Vertion_of_Transform_Numbers_To_Letters
     {
-        //Cifra mas alta traducida 999,999,999,999
-
-        public static void Tranform_And_Show_In_The_Console_The_Result()
+        //inglish
+        private static string[] units = new string[]//representa la units 0-9
         {
-                        string resultado = "";//varible que almacenara el resultado
-            Console.Write("Type the value to transform to letters (The max value to transform is 999,999,999,999 don't type a bigger number): ");
-            string input = Console.ReadLine();//tomando el valor digitado 
+            "zero","one","two","three","four","five","six","seven","eight","nine",
+        };
 
-            if (VerifyingNumberTyped(input))
-            {
-                if (input.Length <= 3)//si el tamano de input es menor o igual a tres
-                {
-                    resultado += ProcesarTresDigitos(input);//suma el resultado de la funcion a la variable resultado
-                }
-                else//si no es ni menor ni igual a tres
-                {
-                    List<string> Grupos = obtenerGruposDeTres(input);//crea una lista generica llamada Grupos y divide en grupos de tres el texto igresado desde la consola
+        private static string[] Tens = new string[]//representa las Tens 10-90
+        {
+            "zero","ten","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"
+        };
 
-                    if (input.Length > 3 && input.Length < 7)//Procesa digitos de miles
-                    {
+        private static string[] Elevens = new string[]//representa los numero entre 10 y 20
+        {
+            "ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"
+        };
 
-                        resultado += Mil(Grupos);
+        private static string[] Hundreds = new string[]//representa las Hundreds 100-900
+        {
+            "cero","one hundred","two hundred","three hundred","four hundred","five hundred","six hundred","seven hundred","eight hundred","nine hundred"
+        };
+        //end inglish
 
-                    }
-                    else if (input.Length > 6 && input.Length < 10)//Procesa digitos de millones
-                    {
-                        resultado += Millones(Grupos);
-                    }
-                    else if (input.Length > 9 && input.Length < 13)//procesa los miles de millones tambien llamados billones en EEUU
-                    {
-                        if (Grupos[0] != "1")
-                        {
-                            resultado += ProcesarTresDigitos(Grupos[0]);
-                            resultado += " mil ";
-                            List<string> _Millones = new List<string>();
-                            _Millones.Add(Grupos[1]);
-                            _Millones.Add(Grupos[2]);
-                            _Millones.Add(Grupos[3]);
-                            resultado += Millones(_Millones);
-                            //resultado += milesMillones;
-                        }
-                        else
-                        {
-                            resultado += " mil ";
-                            List<string> _Millones = new List<string>();
-                            _Millones.Add(Grupos[1]);
-                            _Millones.Add(Grupos[2]);
-                            _Millones.Add(Grupos[3]);
-                            resultado += Millones(_Millones);
-                            //resultado += milesMillones;
-                        }
-
-                    }
-                }
-            }
-            else
-            {
-                Console.WriteLine("Sorry the typed number doesn't have the correct format to transform");
-            }
-
-            Console.Clear();
-            Console.Write("The result of transform the value '{0}' to letters is, '{1}'",input, Tranform_And_Return_The_Value_As_String(input));//muestr el resultado
-            Console.ReadKey();//no eja que la consola se cierre
-        }//fin
-
-        public static string Tranform_And_Return_The_Value_As_String(string input)
+        //--------------------------------------------------------------------------------------------------------------
+        public static string Tranform_And_Return_The_Value_As_StringInglish(string input)//-----------------------------return string--------------
         {
             string resultado="";//aqui estara el resultado final
 
@@ -81,7 +39,7 @@ namespace Transformador
             {
                 if (input.Length <= 3)//si el tamano de input es menor o igual a tres
                 {
-                    resultado += ProcesarTresDigitos(input);//suma el resultado de la funcion a la variable resultado
+                    resultado += ProcesarTresDigitosInglish(input);//suma el resultado de la funcion a la variable resultado
                 }
                 else//si no es ni menor ni igual a tres
                 {
@@ -90,34 +48,34 @@ namespace Transformador
                     if (input.Length > 3 && input.Length < 7)//Procesa digitos de miles
                     {
 
-                        resultado += Mil(Grupos);
+                        resultado += Thousand(Grupos);
 
                     }
-                    else if (input.Length > 6 && input.Length < 10)//Procesa digitos de millones
+                    else if (input.Length > 6 && input.Length < 10)//Procesa digitos de Millions
                     {
-                        resultado += Millones(Grupos);
+                        resultado += Millions(Grupos);
                     }
-                    else if (input.Length > 9 && input.Length < 13)//procesa los miles de millones tambien llamados billones en EEUU
+                    else if (input.Length > 9 && input.Length < 13)//procesa los miles de Millions tambien llamados billones en EEUU
                     {
                         if (Grupos[0] != "1")
                         {
-                            resultado += ProcesarTresDigitos(Grupos[0]);
-                            resultado += " mil ";
+                            resultado += ProcesarTresDigitosInglish(Grupos[0]);
+                            resultado += " Thousand ";
                             List<string> _Millones = new List<string>();
                             _Millones.Add(Grupos[1]);
                             _Millones.Add(Grupos[2]);
                             _Millones.Add(Grupos[3]);
-                            resultado += Millones(_Millones);
+                            resultado += Millions(_Millones);
                             //resultado += milesMillones;
                         }
                         else
                         {
-                            resultado += " mil ";
+                            resultado += " Thousand ";
                             List<string> _Millones = new List<string>();
                             _Millones.Add(Grupos[1]);
                             _Millones.Add(Grupos[2]);
                             _Millones.Add(Grupos[3]);
-                            resultado += Millones(_Millones);
+                            resultado += Millions(_Millones);
                             //resultado += milesMillones;
                         }
 
@@ -129,29 +87,10 @@ namespace Transformador
                 Console.WriteLine("Sorry the typed number doesn't have the correct format to transform");
             }
             return resultado;
-        }//fin
+        }
+        //--------------------------------------------------------------------------------------------------------------
 
-        private static string[] unidades = new string[]//representa la unidades 0-9
-        {
-            "cero","uno","dos","tres","cuatro","cinco","seis","siete","ocho","nueve",
-        };
-
-        private static string[] Decenas = new string[]//representa las decenas 10-90
-        {
-            "cero","diez","vente","trenta","cuarenta","cincuenta","sesenta","setenta","ochenta","noventa"
-        };
-
-        private static string[] Onces = new string[]//representa los numero entre 10 y 20
-        {
-            "Diez","once","doce","trece","catorce","quince","Dieciseis","diesiciete","diesciocho","diescinueve"
-        };
-
-        private static string[] Centenas = new string[]//representa las centenas 100-900
-        {
-            "cero","cien","dociento ","treciento ","cuatrociento ","Quiniento ","seiciento ","seteciento ","ochociento ","noveciento "
-        };
-
-        private static bool VerifyingNumberTyped(string Number)
+        private static bool VerifyingNumberTyped(string Number)//verify th e nuber written
         {
             long number;
             return (long.TryParse(Number, out number) && number > -1 && number <= 999999999999) ? true : false;
@@ -175,46 +114,46 @@ namespace Transformador
             return Resultado;//retorna el resultado
         }
 
-        private static string Mil(List<string> Grupos)//procesa los digitos de miles
+        private static string Thousand(List<string> Grupos)//procesa los digitos de Thousands
         {
-            if (Grupos[0].Substring(0, 1) != "0")
-            {
-                if (Grupos[0] != "1")//si la cifra es mas de mil (1000)
+            //if (Grupos[0].Substring(0, 1) != "0")
+            //{
+                if (Grupos[0] != "1")//si la cifra es mas de Thousand (1000)
                 {
-                    string grupoMil = ProcesarTresDigitos(Grupos[0]);
-                    grupoMil += " mil ";
-                    grupoMil += ProcesarTresDigitos(Grupos[1]);
+                    string grupoMil = ProcesarTresDigitosInglish(Grupos[0]);
+                    grupoMil += (grupoMil==null)? "" : " Thousand ";
+                    grupoMil += ProcesarTresDigitosInglish(Grupos[1]);
                     return grupoMil;
                 }
                 else //Si no lo es
                 {
-                    return "Mil " + ProcesarTresDigitos(Grupos[1]);
+                    return "one Thousand " + ProcesarTresDigitosInglish(Grupos[1]);
                 }
-            }
-            return null;
+            //}
+            //return null;
         }
 
-        private static string Millones(List<string> Grupos) //Procesa los millones
+        private static string Millions(List<string> Grupos) //Procesa los Millions
         {
             if (Grupos[0] != "1")//si la cifra es mas de 1 millon
             {
-                string GrupoMillon = ProcesarTresDigitos(Grupos[0]);
+                string GrupoMillon = ProcesarTresDigitosInglish(Grupos[0]);
                 List<string> GrupoMil = new List<string>();
                 GrupoMil.Add(Grupos[1]);
                 GrupoMil.Add(Grupos[2]);
-                GrupoMillon += " millones " + Mil(GrupoMil);
+                GrupoMillon += " Millions " + Thousand(GrupoMil);
                 return GrupoMillon;
             }
             else//si no lo es
             {
-                List<string> miles = new List<string>();
-                miles.Add(Grupos[1]);
-                miles.Add(Grupos[2]);
-                return "Un millon " + Mil(miles);
+                List<string> Thousands = new List<string>();
+                Thousands.Add(Grupos[1]);
+                Thousands.Add(Grupos[2]);
+                return "One million " + Thousand(Thousands);
             }
         }
 
-        private static string ProcesarTresDigitos(string input)//funcion principal que devuelve l transformacion de un numero de tres digitos
+        private static string ProcesarTresDigitosInglish(string input)//funcion principal que devuelve l transformacion de un numero de tres digitos
         {
             string resultado = ""; //variable que guarda el resultado final
             if (input != "000" && input != "00" && input != "0")//si los digitos no son ceros
@@ -223,14 +162,14 @@ namespace Transformador
                 if (input.Length == 3 && input[0].ToString() != "0")//--Procesando el 3er digito---------------3----------------------------------------
                 {
                     int inputCentenaA = int.Parse(input[0].ToString());//lo combierte en un entero
-                    resultado += Centenas[inputCentenaA];//busca su correspondiente significado
+                    resultado += Hundreds[inputCentenaA];//busca su correspondiente significado
                     if (int.Parse(input[1].ToString()) == 0 && int.Parse(input[2].ToString()) == 0)//Si las sigtes cifras son cerros
                     {
                         return resultado;//retorna
                     }
-                    else if (inputCentenaA == 1)//si no
+                    else if (inputCentenaA >= 1)//si no
                     {
-                        resultado += "to ";//agrega 'to' al resultado
+                        resultado += " ";//agrega 'to' al resultado
                     }
                 }
                 if (input.Length >= 2)//--Procesando el 2do digito------------------------------------2------------------------------------------
@@ -241,20 +180,20 @@ namespace Transformador
                         if (numero < 20 && numero > 10)//si es un numero entre 11 y 19
                         {
                             int inputCentenaB = int.Parse(input[2].ToString());//obtiene el numero a comparar
-                            resultado += Onces[inputCentenaB];//compara y agrega a la variable resultado
+                            resultado += Elevens[inputCentenaB];//compara y agrega a la variable resultado
                             return resultado;//retorna
                         }
                         else//si no lo es
                         {
                             int inputCentenaC = int.Parse(input[1].ToString()); ;//obtiene el numero a comparar
-                            resultado += Decenas[inputCentenaC];//compara y agrega a la variable resultado
+                            resultado += Tens[inputCentenaC];//compara y agrega a la variable resultado
                             if (input[2] == '0')//si el ultimo digito es u cero
                             {
                                 return resultado;//retornalo
                             }
                             else//si no
                             {
-                                resultado += " y ";//agrega 'y'
+                                resultado += "-";//agrega 'y'
                             }
                         }
                     }
@@ -264,13 +203,13 @@ namespace Transformador
                         if (numero < 20 && numero >= 10)//si es un numero entre 11 y 19
                         {
                             int inputint = int.Parse(input[1].ToString());//obtiene un digito de la cadena y lo combierte en un entero
-                            resultado += Onces[inputint];//compara y agrega
+                            resultado += Elevens[inputint];//compara y agrega
                             return resultado;//retorna
                         }
                         else if (numero > 19)//si es mayor a 19
                         {
                             int inputint = int.Parse(input[0].ToString());//obtiene un digito de la cadena y lo combierte en un entero
-                            resultado += Decenas[inputint];//compara y agrega
+                            resultado += Tens[inputint];//compara y agrega
 
                             if (input[1] == '0')//si el caracter de igual a cero
                             {
@@ -278,7 +217,7 @@ namespace Transformador
                             }
                             else//si no
                             {
-                                resultado += " y ";//agrega 'y'
+                                resultado += "-";//agrega 'y'
                             }
                         }
                     }
@@ -288,21 +227,23 @@ namespace Transformador
                     if (input.Length == 3)//si el tamano es igual a tres
                     {
                         int inputInt = int.Parse(input[2].ToString());//combierte el caracte en un int
-                        resultado += unidades[inputInt];//compara y agrega
+                        resultado += units[inputInt];//compara y agrega
                     }
                     else if (input.Length == 1)//si el tamano es igual a 1
                     {
                         int inputCentenaC = int.Parse(input.ToString());//combierte el caracte en un int
-                        resultado += unidades[inputCentenaC];//compara y agrega
+                        resultado += units[inputCentenaC];//compara y agrega
                     }
                     else//si no 
                     {
                         int inputInt = int.Parse(input[1].ToString());//combierte el caracte en un int
-                        resultado += unidades[inputInt];//compara y agrega
+                        resultado += units[inputInt];//compara y agrega
                     }
                 }
             }
+            else { return null; }
             return resultado;//restorn el resultado
         }
+
     }
 }

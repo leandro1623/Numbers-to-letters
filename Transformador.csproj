@@ -46,9 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Inglish_Vertion_of_Transform_Numbers_To_Letters.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TransformNumbersToLetters.cs" />
+    <Compile Include="Spanish_Transform_Numbers_To_Letters.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
