@@ -1,0 +1,7 @@
+C:\Users\acerv\OneDrive\Desktop\Transformador\bin\Debug\Transformador.exe.config
+C:\Users\acerv\OneDrive\Desktop\Transformador\bin\Debug\Transformador.exe
+C:\Users\acerv\OneDrive\Desktop\Transformador\bin\Debug\Transformador.pdb
+C:\Users\acerv\OneDrive\Desktop\Transformador\obj\Debug\Transformador.csproj.AssemblyReference.cache
+C:\Users\acerv\OneDrive\Desktop\Transformador\obj\Debug\Transformador.csproj.CoreCompileInputs.cache
+C:\Users\acerv\OneDrive\Desktop\Transformador\obj\Debug\Transformador.exe
+C:\Users\acerv\OneDrive\Desktop\Transformador\obj\Debug\Transformador.pdb
